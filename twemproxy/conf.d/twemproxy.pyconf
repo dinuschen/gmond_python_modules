@@ -1,0 +1,109 @@
+modules {
+  module {
+    name = "twemproxy"
+    language = "python"
+    /*twemproxy server"*/
+    param host {
+        value = 192.168.28.191
+    }
+    param port {
+        value = 22222
+    }
+    param url {
+        value = "/"
+    }
+    
+    /* pools info */
+    param pool-list {
+        value = "alpha,beta"
+    }
+	/* nodes info. Note: all ip. */
+    param node-list {
+        value = "192.168.28.191:6379,192.168.28.192:6379"
+    }
+  }
+}
+
+/* Collection groups for the
+    example python module */
+collection_group {
+  collect_every = 30
+  time_threshold = 50
+  
+  /* add metrics that you wan't watch */
+  /* format: */
+  /*     server pools info: poolname + '_' + twemproxy's metric name */
+  /*     redis/memcached node info: poolname + '_' + cache server ip + '_' + twemproxy's metric name */
+  /* pool 1 stats. */
+  metric {
+    name = "alpha_client_connections"
+  }
+  metric {
+    name = "alpha_server_ejects"
+  }
+  metric {
+    name = "alpha_forward_error"
+  }
+  metric {
+    name = "alpha_client_err"
+  }
+  metric {
+    name = "alpha_client_eof"
+  }
+  
+  /* node stats in pool 1. */
+  metric {
+    name = "alpha_191_requests"
+  }
+  metric {
+    name = "alpha_191_request_bytes"
+  }
+  metric {
+    name = "alpha_191_responses"
+  }
+  metric {
+    name = "alpha_191_response_bytes"
+  }
+  metric {
+    name = "alpha_192_requests"
+  }
+  metric {
+    name = "alpha_192_request_bytes"
+  }
+  metric {
+    name = "alpha_192_responses"
+  }
+  metric {
+    name = "alpha_192_response_bytes"
+  }
+  
+  /* pool 2 stats */
+  metric {
+    name = "beta_client_connections"
+  }
+  metric {
+    name = "beta_server_ejects"
+  }
+  metric {
+    name = "beta_forward_error"
+  }
+  metric {
+    name = "beta_client_err"
+  }
+  metric {
+    name = "beta_client_eof"
+  }
+  /* node stats in pool 2 */
+  metric {
+    name = "beta_192_requests"
+  }
+  metric {
+    name = "beta_192_request_bytes"
+  }
+  metric {
+    name = "beta_192_responses"
+  }
+  metric {
+    name = "beta_192_response_bytes"
+  }
+}
