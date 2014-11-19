@@ -10,13 +10,13 @@ Then, place `twemproxy.py` and `twemproxy.pyconf` in the appropriate directories
 
 ## DESCRIPTION
 
-Read twemproxy metrics.
+Twemproxy monitor.
 
 ## Metircs
 
-sample:
-{
-    "service": "nutcracker",   
+sample:   
+{   
+    "service": "nutcracker",	
     "source": "host191",    
     "version": "0.2.4",    
     "uptime": 16,   
